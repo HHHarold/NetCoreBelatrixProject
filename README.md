@@ -1,0 +1,2 @@
+# NetCoreBelatrixProject
+Final project
