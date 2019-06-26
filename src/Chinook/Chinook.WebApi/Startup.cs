@@ -84,6 +84,10 @@ namespace Chinook.WebApi
                 app.UseHsts();
             }
 
+            SeedData.Initialize(app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope().ServiceProvider);
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
