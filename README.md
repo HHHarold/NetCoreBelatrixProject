@@ -1,2 +1,12 @@
 # NetCoreBelatrixProject
 Final project
+
+Lista de decisiones técnicas:
+1. No se utilizó MySql por el hecho de no tener soporte para la versión 3 preview 5 de netcore, y la finalidad del curso era trabajar con esa versión. Es por este hecho de qué se trabajo con PostgreSQL.
+2. Se utilizó IEntityTypeConfiguration para tener cada configuración correspondiente a una entidad en archivos separados, de esta manera podemos tener un orden en cada configuración.
+3. Se implementó el patrón repositorio para poder trabajar con operaciones genéricas y con esto poder ahorrar tiempo al momento de desarrollo y no duplicar código. También en la situación que se haya implementado una capa de servicio, gracias a que la capa de repositorio se puede mockear esta capa (Esto es porque con este patrón trabajamos con interfaces).
+4. Se implementó 'ResultFilterAttribute' para las entidades Employee y Customer, por ser potenciales entidades a ser usadas como listas en tablas (para esto se creo un viewModel con las principales propiedades) y también ser usadas en una sola página para su update. Nos apoyamos con el automapper para realizar este tipo de mappings.
+5.Se implementó Swashbuckle, una librería que nos ayuda a implementar Swagger en nuestra API, para la apropiada documentación de los endpoints. Esta documentación puede ser consumida desde {dominio}/swagger/index.html si se decide publicarla. Nos apoyamos de diferentes notaciones hechas a nivel de los controladores.
+6.Se implementó un método genérico para obtener las entidades por Id, este método retorna 200 (OK) cuando el recurso existe o 403 (Forbid) si no existe, se tomo esta decisión para que los consumidores no tengan noción de que si el recurso existe o no existe.
+7.Se implementó los unit test utilizando el framework XUnit, se tomó esta decisión ya que este framework ha sido construído para poder utilizar todas las capacidades que nos ofrece net core. También se uso 'DbInMemory' esto nos permité cargar en memoria la base de datos y poder cubrir a través de nuestro unit test desde la capa superior (WebApi) hasta la capa de acceso a datos (Repository)
+8.Se implementó AspNetCore.Identity que es una implementación de IdentityServer de microsoft, con lo cual ya no es necesario utilizar librerías de terceros. Con esta librería podemos hacer usar de las tablas más comunes y necesarias para poder implementar una autenticacón y autorización en nuestra WebApi.
