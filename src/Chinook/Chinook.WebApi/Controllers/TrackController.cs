@@ -24,10 +24,13 @@ namespace Chinook.WebApi.Controllers
         }
 
         [SwaggerResponse(200, "Success", typeof(Track))]
+        [SwaggerResponse(403, "Forbidden", Type = null)]
         [HttpGet("{trackId}")]
         public async Task<ActionResult<Track>> GetTrack([FromRoute] int trackId)
         {
-            return Ok(await _repository.ReadById(trackId));
+            var track = await _repository.ReadById(trackId);
+            if (track == null) return Forbid();
+            return Ok(track);
         }
 
         [SwaggerResponse(200, "Success")]

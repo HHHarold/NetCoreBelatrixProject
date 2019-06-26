@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.WebApi.Repository",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.WebApi.Repository.Postgresql", "Chinook.Repository.Postgresql\Chinook.WebApi.Repository.Postgresql.csproj", "{9FF9D95B-BFC7-4D60-B4D0-70610A90C78F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chinook.WebApi", "Chinook.WebApi\Chinook.WebApi.csproj", "{D64922CA-9E71-4526-8351-C21C385E2759}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.WebApi", "Chinook.WebApi\Chinook.WebApi.csproj", "{D64922CA-9E71-4526-8351-C21C385E2759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chinook.WebApi.Test", "Chinook.WebApi.Test\Chinook.WebApi.Test.csproj", "{51C8A6D1-DFD9-4B8E-96A1-D0C112A104F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D64922CA-9E71-4526-8351-C21C385E2759}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D64922CA-9E71-4526-8351-C21C385E2759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D64922CA-9E71-4526-8351-C21C385E2759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C8A6D1-DFD9-4B8E-96A1-D0C112A104F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C8A6D1-DFD9-4B8E-96A1-D0C112A104F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C8A6D1-DFD9-4B8E-96A1-D0C112A104F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C8A6D1-DFD9-4B8E-96A1-D0C112A104F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -24,10 +24,13 @@ namespace Chinook.WebApi.Controllers
         }
 
         [SwaggerResponse(200, "Success", typeof(Artist))]
+        [SwaggerResponse(403, "Forbidden", Type = null)]
         [HttpGet("{artistId}")]
         public async Task<ActionResult<Artist>> GetArtist([FromRoute] int artistId)
         {
-            return Ok(await _repository.ReadById(artistId));
+            var artist = await _repository.ReadById(artistId);
+            if (artist == null) return Forbid();
+            return Ok(artist);
         }
 
         [SwaggerResponse(200, "Success")]

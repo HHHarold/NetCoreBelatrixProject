@@ -67,7 +67,7 @@ namespace Chinook.WebApi
                     Title = "Chinook Web Api",
                     Version = "v1"
                 });
-                c.CustomSchemaIds(x => x.FullName);
+                c.CustomSchemaIds(x => x.FullName);                
             });
         }
 

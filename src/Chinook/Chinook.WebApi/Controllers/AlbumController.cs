@@ -24,10 +24,13 @@ namespace Chinook.WebApi.Controllers
         }
 
         [SwaggerResponse(200, "Success", typeof(Album))]
+        [SwaggerResponse(403, "Forbidden", Type = null)]
         [HttpGet("{albumId}")]
         public async Task<ActionResult<Album>> GetAlbum([FromRoute] int albumId)
         {
-            return Ok(await _repository.ReadById(albumId));
+            var album = await _repository.ReadById(albumId);
+            if (album == null) return Forbid();
+            return Ok(album);
         }
 
         [SwaggerResponse(200, "Success")]

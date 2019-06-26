@@ -24,10 +24,13 @@ namespace Chinook.WebApi.Controllers
         }
 
         [SwaggerResponse(200, "Success", typeof(InvoiceLine))]
+        [SwaggerResponse(403, "Forbidden", Type = null)]
         [HttpGet("{invoiceLineId}")]
         public async Task<ActionResult<InvoiceLine>> GetInvoiceLine([FromRoute] int invoiceLineId)
         {
-            return Ok(await _repository.ReadById(invoiceLineId));
+            var invoiceLine = await _repository.ReadById(invoiceLineId);
+            if (invoiceLine == null) return Forbid();
+            return Ok(invoiceLine);
         }
 
         [SwaggerResponse(200, "Success")]

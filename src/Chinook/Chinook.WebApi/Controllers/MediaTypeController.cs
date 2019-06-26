@@ -24,10 +24,13 @@ namespace Chinook.WebApi.Controllers
         }
 
         [SwaggerResponse(200, "Success", typeof(MediaType))]
-        [HttpGet("{mediaTypeId}")]
+        [SwaggerResponse(403, "Forbidden", Type = null)]
+        [HttpGet("{mediaTypeId}")]        
         public async Task<ActionResult<MediaType>> GetMediaType([FromRoute] int mediaTypeId)
         {
-            return Ok(await _repository.ReadById(mediaTypeId));
+            var mediaType = await _repository.ReadById(mediaTypeId);
+            if (mediaType == null) return Forbid();
+            return Ok();
         }
 
         [SwaggerResponse(200, "Success")]
