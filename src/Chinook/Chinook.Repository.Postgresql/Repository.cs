@@ -23,6 +23,11 @@ namespace Chinook.Repository.Postgresql
             return await _db.Set<T>().AsNoTracking().ToListAsync();
         }
 
+        public async Task<T> ReadById(object id)
+        {
+            return await _db.Set<T>().FindAsync(id);
+        }
+
         public async Task<bool> Update(T entity)
         {
             _db.Update(entity);

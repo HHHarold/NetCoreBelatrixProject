@@ -7,6 +7,7 @@ namespace Chinook.WebApi.Repository
     {
         Task<int> Create(T entity);
         Task<IEnumerable<T>> Read();
+        Task<T> ReadById(object id);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
     }
