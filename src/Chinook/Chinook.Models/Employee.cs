@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Chinook.Models
+namespace Chinook.WebApi.Models
 {
     public class Employee
     {

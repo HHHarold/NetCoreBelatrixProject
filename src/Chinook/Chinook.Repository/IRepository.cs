@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Chinook.Repository
+namespace Chinook.WebApi.Repository
 {
     public interface IRepository<T>
     {

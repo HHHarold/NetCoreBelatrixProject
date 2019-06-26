@@ -1,16 +1,16 @@
-﻿using Chinook.Models;
+﻿using Chinook.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Chinook.Repository.Postgresql.Configurations
+namespace Chinook.WebApi.Repository.Postgresql.Configurations
 {
-    public class CustomerConfig : IEntityTypeConfiguration<Customer>
+    internal class CustomerConfig : IEntityTypeConfiguration<Customer>
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("customer")
                 .HasKey(c => c.CustomerId)
-                .HasName("customer_customer_id_pkey");
+                .HasName("customer__customer_id__pkey");
 
             builder.Property(e => e.CustomerId)
                 .HasColumnName("customer_id")
@@ -66,11 +66,11 @@ namespace Chinook.Repository.Postgresql.Configurations
             builder.HasOne(d => d.SupportRep)
                 .WithMany(p => p.Customers)
                 .HasForeignKey(d => d.SupportRepId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.NoAction)
                 .HasConstraintName("customer__reference_employee__fkey");
 
             builder.HasIndex(e => e.SupportRepId)
-                .HasName("customer_support_rep_id__idx");
+                .HasName("customer__support_rep_id__idx");
         }
     }
 }

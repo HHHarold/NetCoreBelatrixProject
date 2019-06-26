@@ -1,7 +1,14 @@
-﻿namespace Chinook.Models
+﻿using System.Collections.Generic;
+
+namespace Chinook.WebApi.Models
 {
     public class Customer
     {
+        public Customer()
+        {
+            Invoices = new HashSet<Invoice>();
+        }
+
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,5 +24,6 @@
         public int SupportRepId { get; set; }
 
         public Employee SupportRep { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }

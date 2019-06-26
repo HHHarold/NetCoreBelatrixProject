@@ -1,8 +1,8 @@
-﻿using Chinook.Models;
+﻿using Chinook.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Chinook.Repository.Postgresql.Configurations
+namespace Chinook.WebApi.Repository.Postgresql.Configurations
 {
     internal class AlbumConfig : IEntityTypeConfiguration<Album>
     {
@@ -10,7 +10,7 @@ namespace Chinook.Repository.Postgresql.Configurations
         {
             builder.ToTable("album")
                 .HasKey(c => c.AlbumId)
-                .HasName("album_album_id_pkey");
+                .HasName("album__album_id__pkey");
 
             builder.Property(e => e.AlbumId)
                 .HasColumnName("album_id")
@@ -23,12 +23,12 @@ namespace Chinook.Repository.Postgresql.Configurations
 
             builder.HasOne(d => d.Artist)
                 .WithMany(p => p.Albums)
-                .HasForeignKey(d => d.AlbumId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasForeignKey(d => d.AlbumId)                
+                .OnDelete(DeleteBehavior.NoAction)                
                 .HasConstraintName("Album__reference_artist__fkey");
 
             builder.HasIndex(e => e.ArtistId)
-                .HasName("album_artist_id__idx");            
+                .HasName("album__artist_id__idx");            
         }
     }
 }

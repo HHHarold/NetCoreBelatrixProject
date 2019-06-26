@@ -1,4 +1,4 @@
-﻿namespace Chinook.Models
+﻿namespace Chinook.WebApi.Models
 {
     public class PlaylistTrack
     {

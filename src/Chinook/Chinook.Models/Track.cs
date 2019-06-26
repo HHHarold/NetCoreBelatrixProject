@@ -1,7 +1,15 @@
-﻿namespace Chinook.Models
+﻿using System.Collections.Generic;
+
+namespace Chinook.WebApi.Models
 {
     public class Track
     {
+        public Track()
+        {
+            InvoiceLines = new HashSet<InvoiceLine>();
+            PlaylistTracks = new HashSet<PlaylistTrack>();
+        }
+
         public int TrackId { get; set; }
         public string Name { get; set; }
         public int? AlbumId { get; set; }
@@ -16,5 +24,7 @@
         public Album Album { get; set; }
         public MediaType MediaType { get; set; }
         public Genre Genre { get; set; }
+        public ICollection<InvoiceLine> InvoiceLines { get; set; }
+        public ICollection<PlaylistTrack> PlaylistTracks { get; set; }
     }
 }

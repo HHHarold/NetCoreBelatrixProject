@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace Chinook.Models
+namespace Chinook.WebApi.Models
 {
     public class Invoice
     {
+        public Invoice()
+        {
+            InvoiceLines = new HashSet<InvoiceLine>();
+        }
+
         public int InvoiceId { get; set; }
         public int CustomerId { get; set; }
         public DateTime InvoiceDate { get; set; }
@@ -12,8 +18,9 @@ namespace Chinook.Models
         public string BillingState { get; set; }
         public string BillingCountry { get; set; }
         public string BillingPostalCode { get; set; }
-        public Decimal Total { get; set; }
+        public decimal Total { get; set; }
 
         public Customer Customer { get; set; }
+        public ICollection<InvoiceLine> InvoiceLines { get; set; }
     }
 }

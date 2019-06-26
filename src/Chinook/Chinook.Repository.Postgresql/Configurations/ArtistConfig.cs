@@ -1,16 +1,16 @@
-﻿using Chinook.Models;
+﻿using Chinook.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Chinook.Repository.Postgresql.Configurations
+namespace Chinook.WebApi.Repository.Postgresql.Configurations
 {
-    public class ArtistConfig : IEntityTypeConfiguration<Artist>
+    internal class ArtistConfig : IEntityTypeConfiguration<Artist>
     {
         public void Configure(EntityTypeBuilder<Artist> builder)
         {
             builder.ToTable("artist")
                 .HasKey(c => c.ArtistId)
-                .HasName("artist_artist_id_pkey");
+                .HasName("artist__artist_id__pkey");
 
             builder.Property(e => e.ArtistId)
                 .HasColumnName("artist_id")
